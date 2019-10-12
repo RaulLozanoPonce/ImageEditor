@@ -39,7 +39,7 @@ public class ImageEditor extends javax.swing.JFrame {
         thresholdImageBoard = new imageEditor.Board();
         currentThresholdLabel = new javax.swing.JLabel();
         thresholdLabel = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         loadImageItem = new javax.swing.JMenuItem();
         saveImageItem = new javax.swing.JMenuItem();
@@ -95,7 +95,7 @@ public class ImageEditor extends javax.swing.JFrame {
 
         fileMenu.setText("Archivo");
 
-        loadImageItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        loadImageItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         loadImageItem.setText("Cargar Imagen");
         loadImageItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +104,7 @@ public class ImageEditor extends javax.swing.JFrame {
         });
         fileMenu.add(loadImageItem);
 
-        saveImageItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        saveImageItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         saveImageItem.setText("Guardar Imagen");
         saveImageItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +113,7 @@ public class ImageEditor extends javax.swing.JFrame {
         });
         fileMenu.add(saveImageItem);
 
-        exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         exitItem.setText("Salir");
         exitItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,11 +122,11 @@ public class ImageEditor extends javax.swing.JFrame {
         });
         fileMenu.add(exitItem);
 
-        jMenuBar1.add(fileMenu);
+        menuBar.add(fileMenu);
 
         editMenu.setText("Editar");
 
-        setThresholdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        setThresholdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         setThresholdItem.setText("Ajustar Umbral");
         setThresholdItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class ImageEditor extends javax.swing.JFrame {
         });
         editMenu.add(setThresholdItem);
 
-        jMenuBar1.add(editMenu);
+        menuBar.add(editMenu);
 
         helpMenu.setText("Ayuda");
 
@@ -148,9 +148,9 @@ public class ImageEditor extends javax.swing.JFrame {
         });
         helpMenu.add(aboutItem);
 
-        jMenuBar1.add(helpMenu);
+        menuBar.add(helpMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,15 +221,15 @@ public class ImageEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_saveImageItemActionPerformed
 
     private void setThresholdItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setThresholdItemActionPerformed
-        threshold = Math.max(0, Math.min(255,Integer.parseInt(
+        try{
+            threshold = Math.max(0, Math.min(255,Integer.parseInt(
                 JOptionPane.showInputDialog(null, "Introducir Umbral [0-255]"))));
-        thresholdLabel.setText(Integer.toString(threshold));
-        if(originalImage != null){
-            try{
+            thresholdLabel.setText(Integer.toString(threshold));
+            if(originalImage != null){
                 thresholdImageBoard.setImage((BufferedImage) HighGui.toBufferedImage(toThreshold(originalImage, threshold)));
                 repaint();
-            }catch(NumberFormatException e){}
-        }
+            }
+        }catch(NumberFormatException e){}
     }//GEN-LAST:event_setThresholdItemActionPerformed
 
     private void aboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutItemActionPerformed
@@ -280,13 +280,13 @@ public class ImageEditor extends javax.swing.JFrame {
     }
     
     private void setMnemonic() {
-        fileMenu.setMnemonic('F');
+        fileMenu.setMnemonic('A');
         editMenu.setMnemonic('E');
-        helpMenu.setMnemonic('H');
-        loadImageItem.setMnemonic('L');
-        saveImageItem.setMnemonic('S');
-        exitItem.setMnemonic('X');
-        setThresholdItem.setMnemonic('T');
+        helpMenu.setMnemonic('U');
+        loadImageItem.setMnemonic('C');
+        saveImageItem.setMnemonic('G');
+        exitItem.setMnemonic('S');
+        setThresholdItem.setMnemonic('U');
         aboutItem.setMnemonic('A');
     }
     
@@ -312,8 +312,8 @@ public class ImageEditor extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem loadImageItem;
+    private javax.swing.JMenuBar menuBar;
     private imageEditor.Board originalImageBoard;
     private javax.swing.JMenuItem saveImageItem;
     private javax.swing.JMenuItem setThresholdItem;

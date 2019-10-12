@@ -1,7 +1,6 @@
 package imageEditor;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import org.opencv.imgcodecs.Imgcodecs;
 
 public class Board extends JPanel{
     
@@ -30,7 +28,6 @@ public class Board extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
     
