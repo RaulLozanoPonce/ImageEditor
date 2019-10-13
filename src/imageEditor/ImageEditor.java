@@ -223,7 +223,7 @@ public class ImageEditor extends javax.swing.JFrame {
     private void setThresholdItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setThresholdItemActionPerformed
         try{
             threshold = Math.max(0, Math.min(255,Integer.parseInt(
-                JOptionPane.showInputDialog(null, "Introducir Umbral [0-255]"))));
+                JOptionPane.showInputDialog(null, "Introducir Umbral [0-255]", "Ajustar Umbral", JOptionPane.PLAIN_MESSAGE))));
             thresholdLabel.setText(Integer.toString(threshold));
             if(originalImage != null){
                 thresholdImageBoard.setImage((BufferedImage) HighGui.toBufferedImage(toThreshold(originalImage, threshold)));

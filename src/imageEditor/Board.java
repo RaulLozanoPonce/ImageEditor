@@ -28,7 +28,7 @@ public class Board extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(image, 10, 20, getWidth() - 20, getHeight() - 30, this);
     }
     
     public boolean loadImage(String path, String imageFormat){
